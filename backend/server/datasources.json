@@ -1,0 +1,12 @@
+{
+    "topspots": {
+        "host": "",
+        "port": 27017,
+        "url": "",
+        "database": "",
+        "password": "",
+        "name": "topspots",
+        "user": "",
+        "connector": "mongodb"
+    }
+}

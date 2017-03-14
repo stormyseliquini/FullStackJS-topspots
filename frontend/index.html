@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- add ng-app to initialize Angular -->
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>San Diego Top Spots</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/styles/styles.css">
+    <!-- endinject -->
+</head>
+<!-- add  ng-controller and reference the name of the controller you defined in index.js -->
+
+<body ng-controller="TopSpotsController as vm">
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <!-- endbower -->
+    <center id="title">San Diego Top Spots</center>
+    <table id="table">
+        <thead>
+            <tbody>
+                <tr>
+                    <th>NAME</th>
+                    <th>DESCRIPTION</th>
+                    <th>LOCATION</th>
+                </tr>
+                <tr ng-repeat='value in vm.topspots'>
+                    <td>{{value.name}}</td>
+                    <td>{{value.description}}</td>
+                    <td>
+                        <a href='https://www.google.com/maps?q={{value.location[0]}},{{value.location[1]}}'>check it out!</a>
+                    </td>
+                </tr>
+            </tbody>
+        </thead>
+    </table>
+    <div>
+        <label>Name</label>
+        <div>
+            <input type="text" name="name" ng-model="vm.name" />
+        </div>
+    </div>
+    <div>
+        <label>description</label>
+        <div>
+            <input type="text" name="description" ng-model="vm.description" />
+        </div>
+    </div>
+    <div>
+        <label>location(latitude)</label>
+        <div>
+            <input type="number" name="locationLAT" ng-model="vm.locationLAT" />
+        </div>
+    </div>
+    <div>
+        <label>location(longitude)</label>
+        <div>
+            <input type="number" name="locationLONG" ng-model="vm.locationLONG" />
+        </div>
+        <div>
+            <div style="padding-left:110px">
+                <input type="submit" value="Submit" ng-click="vm.addTopSpot()" />
+            </div>
+        </div>
+        <div ng-model="map"></div>
+        <!-- inject:js -->
+        <script src="/app/app.js"></script>
+        <script src="/app/topspots.controller.js"></script>
+        <script src="/app/topspots.factory.js"></script>
+        <!-- endinject -->
+</body>
+
+</html>
